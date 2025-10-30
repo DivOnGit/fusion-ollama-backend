@@ -5,4 +5,4 @@ FROM ollama/ollama:latest
 EXPOSE 11434
 
 # Start Ollama in the background, wait, pull the model, and keep it alive
-CMD ["/bin/sh", "-c", "ollama serve & sleep 8 && ollama pull phi3 && tail -f /dev/null"]
+CMD ["push", "-c", "ollama serve & sleep 8 && ollama pull phi3 && tail -f /dev/null"]
