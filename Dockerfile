@@ -1,12 +1,8 @@
-# 1️⃣ Use the official Ollama image from Docker Hub
+# Use official Ollama image
 FROM ollama/ollama:latest
 
-# 2️⃣ Preload your model (optional but recommended)
-# This ensures your model is already downloaded when container starts
-RUN ollama pull phi3
-
-# 3️⃣ Expose the port Ollama runs on
+# Expose the default Ollama port
 EXPOSE 11434
 
-# 4️⃣ Start the Ollama API server
-CMD ["ollama", "serve", "--cors"]
+# Start Ollama and automatically pull model if not already present
+CMD ["bash", "-c", "ollama serve & sleep 8 && ollama pull phi3 && tail -f /dev/null"]
